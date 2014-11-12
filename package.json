@@ -1,0 +1,21 @@
+{
+  "name": "node-mocha",
+  "version": "1.0.0",
+  "description": "Test with mocha",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test/**/**",
+    "start": "node ./bin/www"
+  },
+  "author": "Leo Allen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.2",
+    "express-ejs-layouts": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1",
+    "zombie": "^2.1.1"
+  }
+}
