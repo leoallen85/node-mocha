@@ -20,12 +20,12 @@ describe('home page', function() {
     browser.visit('/', done);
   });
 
-  it('should show a welcome message', function(){
+  it('shows a welcome message', function(){
     expect(browser.text('h1')).to.eql('Welcome to Makers');
   });
 
-  describe('clicking links', function() {
-    // TODO
+  it('links to the chat page', function() {
+    browser.assert.link('.chat-link', "Let's chat", '/chat');
   });
 
   after(function(done){
