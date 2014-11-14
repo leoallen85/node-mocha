@@ -21,14 +21,10 @@ describe('home page', function() {
   });
 
   it('shows a welcome message', function(){
-    expect(browser.text('h1')).to.eql('Welcome to Makers');
+    expect(browser.text('h1')).to.eql('Welcome to Makers Chat');
   });
 
   it('links to the chat page', function() {
     browser.assert.link('.chat-link', "Let's chat", '/chat');
-  });
-
-  after(function(done){
-    this.server.close(done);
   });
 });

@@ -2,12 +2,13 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 
+var socket = require('socket.io');
+var io = socket(server);
+
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts')
 
-
 var routes = require('./routes/index');
-var chat  = require('./routes/chat');
 
 app.use(require('express').static('public'));
 app.use(expressLayouts);
@@ -16,7 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.use('/', routes);
-app.use('/chat', chat);
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -24,7 +30,6 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
 
 // error handlers
 
@@ -39,7 +44,6 @@ if (app.get('env') === 'development') {
         });
     });
 }
-
 
 // production error handler
 // no stacktraces leaked to user
