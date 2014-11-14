@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha test/**/**",
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "author": "Leo Allen",
   "license": "ISC",
